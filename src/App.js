@@ -1,5 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./components/HomePage";
 import "./App.css";
 
