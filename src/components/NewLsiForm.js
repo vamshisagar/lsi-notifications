@@ -145,7 +145,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 </Row>
             )}
 
-            <Row>
+            <Row className="mt-2">
                 <Col md={4}>
                     <Form.Group>
                         <Form.Label>Start Time</Form.Label>
@@ -172,7 +172,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 )}
             </Row>
 
-            <Row>
+            <Row className="mt-2">
                 <Col md={6}>
                     <Form.Group>
                         <Form.Label>Impact Type</Form.Label>
@@ -197,7 +197,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 </Col>
             </Row>
 
-            <Form.Group>
+            <Form.Group className="mt-2">
                 <Form.Label>Subject</Form.Label>
                 <Form.Control
                     type="text"
@@ -207,7 +207,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 />
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className="mt-2">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                     as="textarea"
@@ -217,7 +217,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 />
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className="mt-2">
                 <Form.Label>Customer Impact</Form.Label>
                 <Form.Control
                     as="textarea"
@@ -227,7 +227,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 />
             </Form.Group>
 
-            <Row>
+            <Row className="mt-2">
                 <Col md={4}>
                     <Form.Group>
                         <Form.Label>DRI Engaged</Form.Label>
@@ -270,7 +270,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 )}
             </Row>
 
-            <Form.Group>
+            <Form.Group className="mt-2">
                 <Form.Label>Recipients</Form.Label>
                 <Form.Control
                     type="text"
@@ -285,7 +285,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     return (
         <Form>
             {renderCommonFields()}
-            <Button variant="primary" className="mt-3 me-2" onClick={handlePreview}>
+            <Button
+                variant="primary"
+                className="mt-3 me-2"
+                onClick={handlePreview}
+            >
                 Preview
             </Button>
             <Button variant="secondary" className="mt-3" onClick={onClose}>

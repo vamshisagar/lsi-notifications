@@ -5,7 +5,10 @@ import axios from "axios";
 const PreviewPage = ({ formData, onClose, onBack }) => {
     const handleSend = async () => {
         try {
-            await axios.post("https://your-api-endpoint/api/lsi", formData);
+            await axios.post(
+                "https://localhost:5001/api/LsiNotification",
+                formData
+            ); // Adjust the URL based on your .NET API configuration
             alert("Data sent successfully");
             onClose();
         } catch (error) {
@@ -29,10 +32,18 @@ const PreviewPage = ({ formData, onClose, onBack }) => {
                     ))}
                 </tbody>
             </Table>
-            <Button variant="primary" className="mt-3 me-2" onClick={handleSend}>
+            <Button
+                variant="primary"
+                className="mt-3 me-2"
+                onClick={handleSend}
+            >
                 Send
             </Button>
-            <Button variant="secondary" className="mt-3 me-2" onClick={handleBack}>
+            <Button
+                variant="secondary"
+                className="mt-3 me-2"
+                onClick={handleBack}
+            >
                 Back
             </Button>
         </div>
