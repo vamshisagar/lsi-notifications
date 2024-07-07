@@ -1,3 +1,4 @@
+// LsiList.js
 import React, {
     useState,
     useEffect,
@@ -8,12 +9,15 @@ import { Table, Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import EditLsiForm from "./EditLsiForm";
 import EditPreviewPage from "./EditPreviewPage";
+import ViewLsiPage from "./ViewLsiPage";
 
 const LsiList = forwardRef((props, ref) => {
     const [lsiList, setLsiList] = useState([]);
     const [editLsiData, setEditLsiData] = useState(null);
     const [isEditFormModalOpen, setIsEditFormModalOpen] = useState(false);
     const [isEditPreviewModalOpen, setIsEditPreviewModalOpen] = useState(false);
+    const [viewLsiData, setViewLsiData] = useState(null);
+    const [isViewModalOpen, setIsViewModalOpen] = useState(false);
 
     const fetchLsiList = async () => {
         try {
@@ -52,6 +56,15 @@ const LsiList = forwardRef((props, ref) => {
         setIsEditPreviewModalOpen(false);
     };
 
+    const openViewModal = (lsiData) => {
+        setViewLsiData(lsiData);
+        setIsViewModalOpen(true);
+    };
+
+    const closeViewModal = () => {
+        setIsViewModalOpen(false);
+    };
+
     return (
         <div className="container mt-5">
             <Table striped bordered hover>
@@ -77,7 +90,7 @@ const LsiList = forwardRef((props, ref) => {
                                 <Button
                                     variant="info"
                                     className="me-2"
-                                    onClick={() => openEditPreviewModal(lsi)}
+                                    onClick={() => openViewModal(lsi)}
                                 >
                                     View
                                 </Button>
@@ -111,6 +124,21 @@ const LsiList = forwardRef((props, ref) => {
                     onClose={closeEditPreviewModal}
                     onUpdateSuccess={fetchLsiList}
                 />
+            )}
+
+            {/* View LSI Modal */}
+            {isViewModalOpen && (
+                <Modal show={isViewModalOpen} onHide={closeViewModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>View LSI</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <ViewLsiPage
+                            lsiData={viewLsiData}
+                            onClose={closeViewModal}
+                        />
+                    </Modal.Body>
+                </Modal>
             )}
         </div>
     );
