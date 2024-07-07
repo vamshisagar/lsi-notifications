@@ -18,6 +18,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         azureCri: "",
         recipients: "",
     });
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         if (initialData) {
@@ -28,11 +29,28 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        setErrors({ ...errors, [name]: "" });
+    };
+
+    const validate = () => {
+        const newErrors = {};
+        if (!formData.lsi) newErrors.lsi = "LSI# is required";
+        if (!formData.startTime) newErrors.startTime = "Start time is required";
+        if (!formData.description)
+            newErrors.description = "Description is required";
+
+        if (formData.status === "Mitigated" && !formData.endTime) {
+            newErrors.endTime = "End time is required";
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
 
     const handlePreview = () => {
-        onPreview(formData);
-        onClose();
+        if (validate()) {
+            onPreview(formData);
+            onClose();
+        }
     };
 
     const renderCommonFields = () => (
@@ -86,6 +104,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                                 value={formData.lsi}
                                 onChange={handleChange}
                             />
+                            {errors.lsi && (
+                                <span className="text-danger">
+                                    {errors.lsi}
+                                </span>
+                            )}
                         </Form.Group>
                     </Col>
                 </Row>
@@ -140,6 +163,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                                 value={formData.lsi}
                                 onChange={handleChange}
                             />
+                            {errors.lsi && (
+                                <span className="text-danger">
+                                    {errors.lsi}
+                                </span>
+                            )}
                         </Form.Group>
                     </Col>
                 </Row>
@@ -155,6 +183,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                             value={formData.startTime}
                             onChange={handleChange}
                         />
+                        {errors.startTime && (
+                            <span className="text-danger">
+                                {errors.startTime}
+                            </span>
+                        )}
                     </Form.Group>
                 </Col>
                 {formData.status === "Mitigated" && (
@@ -167,6 +200,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                                 value={formData.endTime}
                                 onChange={handleChange}
                             />
+                            {errors.endTime && (
+                                <span className="text-danger">
+                                    {errors.endTime}
+                                </span>
+                            )}
                         </Form.Group>
                     </Col>
                 )}
@@ -215,6 +253,9 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                     value={formData.description}
                     onChange={handleChange}
                 />
+                {errors.description && (
+                    <span className="text-danger">{errors.description}</span>
+                )}
             </Form.Group>
 
             <Form.Group className="mt-2">
