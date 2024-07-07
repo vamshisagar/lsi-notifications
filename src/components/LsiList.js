@@ -10,6 +10,7 @@ import axios from "axios";
 import EditLsiForm from "./EditLsiForm";
 import EditPreviewPage from "./EditPreviewPage";
 import ViewLsiPage from "./ViewLsiPage";
+import DeleteLsiPage from "./DeleteLsiPage";
 
 const LsiList = forwardRef((props, ref) => {
     const [lsiList, setLsiList] = useState([]);
@@ -18,6 +19,8 @@ const LsiList = forwardRef((props, ref) => {
     const [isEditPreviewModalOpen, setIsEditPreviewModalOpen] = useState(false);
     const [viewLsiData, setViewLsiData] = useState(null);
     const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+    const [deleteLsiData, setDeleteLsiData] = useState(null);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
     const fetchLsiList = async () => {
         try {
@@ -65,6 +68,26 @@ const LsiList = forwardRef((props, ref) => {
         setIsViewModalOpen(false);
     };
 
+    const openDeleteModal = (lsiData) => {
+        setDeleteLsiData(lsiData);
+        setIsDeleteModalOpen(true);
+    };
+
+    const closeDeleteModal = () => {
+        setIsDeleteModalOpen(false);
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(
+                `https://localhost:5001/api/LsiNotification/${id}`
+            );
+            fetchLsiList();
+        } catch (error) {
+            console.error("Error deleting LSI record:", error);
+        }
+    };
+
     return (
         <div className="container mt-5">
             <Table striped bordered hover>
@@ -101,7 +124,12 @@ const LsiList = forwardRef((props, ref) => {
                                 >
                                     Edit
                                 </Button>
-                                <Button variant="danger">Delete</Button>
+                                <Button
+                                    variant="danger"
+                                    onClick={() => openDeleteModal(lsi)}
+                                >
+                                    Delete
+                                </Button>
                             </td>
                         </tr>
                     ))}
@@ -128,7 +156,11 @@ const LsiList = forwardRef((props, ref) => {
 
             {/* View LSI Modal */}
             {isViewModalOpen && (
-                <Modal show={isViewModalOpen} onHide={closeViewModal}>
+                <Modal
+                    show={isViewModalOpen}
+                    onHide={closeViewModal}
+                    dialogClassName="custom-modal"
+                >
                     <Modal.Header closeButton>
                         <Modal.Title>View LSI</Modal.Title>
                     </Modal.Header>
@@ -136,6 +168,22 @@ const LsiList = forwardRef((props, ref) => {
                         <ViewLsiPage
                             lsiData={viewLsiData}
                             onClose={closeViewModal}
+                        />
+                    </Modal.Body>
+                </Modal>
+            )}
+
+            {/* Delete LSI Modal */}
+            {isDeleteModalOpen && (
+                <Modal show={isDeleteModalOpen} onHide={closeDeleteModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Delete LSI</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <DeleteLsiPage
+                            lsiData={deleteLsiData}
+                            onDelete={handleDelete}
+                            onClose={closeDeleteModal}
                         />
                     </Modal.Body>
                 </Modal>
