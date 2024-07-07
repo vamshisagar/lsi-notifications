@@ -7,16 +7,28 @@ const ViewLsiPage = ({ lsiData, onClose }) => {
         <div>
             <Table striped bordered hover>
                 <tbody>
-                    {Object.entries(lsiData).map(([key, value]) => (
-                        <tr key={key}>
-                            <td>{key}</td>
-                            <td>
-                                {typeof value === "object"
-                                    ? JSON.stringify(value)
-                                    : value}
-                            </td>
-                        </tr>
-                    ))}
+                    {Object.entries(lsiData).map(([key, value]) => {
+                        if (
+                            (key === "nextUpdate" &&
+                                lsiData.status !== "Investigating" &&
+                                lsiData.status !== "Mitigating") ||
+                            (key === "endTime" &&
+                                lsiData.status !== "Mitigated") ||
+                            key === "id"
+                        ) {
+                            return null; // Do not render these rows if conditions are not met
+                        }
+                        return (
+                            <tr key={key}>
+                                <td>{key}</td>
+                                <td>
+                                    {typeof value === "object"
+                                        ? JSON.stringify(value)
+                                        : value}
+                                </td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </Table>
             <Button variant="secondary" className="mt-3" onClick={onClose}>

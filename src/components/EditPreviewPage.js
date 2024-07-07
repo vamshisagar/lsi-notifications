@@ -27,16 +27,27 @@ const EditPreviewPage = ({ formData, onClose, onUpdateSuccess }) => {
             <Modal.Body>
                 <Table striped bordered hover>
                     <tbody>
-                        {Object.entries(formData).map(([key, value]) => (
-                            <tr key={key}>
-                                <td>{key}</td>
-                                <td>
-                                    {typeof value === "object"
-                                        ? JSON.stringify(value)
-                                        : value}
-                                </td>
-                            </tr>
-                        ))}
+                        {Object.entries(formData).map(([key, value]) => {
+                            if (
+                                (key === "nextUpdate" &&
+                                    formData.status !== "Investigating" &&
+                                    formData.status !== "Mitigating") ||
+                                (key === "endTime" &&
+                                    formData.status !== "Mitigated")
+                            ) {
+                                return null; // Do not render these rows if conditions are not met
+                            }
+                            return (
+                                <tr key={key}>
+                                    <td>{key}</td>
+                                    <td>
+                                        {typeof value === "object"
+                                            ? JSON.stringify(value)
+                                            : value}
+                                    </td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
                 </Table>
             </Modal.Body>
