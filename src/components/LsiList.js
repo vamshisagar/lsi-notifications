@@ -95,7 +95,7 @@ const LsiList = forwardRef((props, ref) => {
                     <tr>
                         <th>Lsi</th>
                         <th>Status</th>
-                        <th>Subject</th>
+                        <th>Service</th>
                         <th>Start Time</th>
                         <th>Next Update</th>
                         <th>Action</th>
@@ -106,9 +106,13 @@ const LsiList = forwardRef((props, ref) => {
                         <tr key={index}>
                             <td>{lsi.lsi}</td>
                             <td>{lsi.status}</td>
-                            <td>{lsi.subject}</td>
+                            <td>{lsi.team}</td>
                             <td>{lsi.startTime}</td>
-                            <td>{lsi.nextUpdate}</td>
+                            <td>
+                                {lsi.status === "Mitigated"
+                                    ? ""
+                                    : lsi.nextUpdate}
+                            </td>
                             <td>
                                 <Button
                                     variant="info"

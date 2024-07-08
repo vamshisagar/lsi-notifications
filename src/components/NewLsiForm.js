@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     const [formData, setFormData] = useState({
         team: "Application Insights",
-        status: "",
+        status: "Investigating",
         lsi: "",
         startTime: "",
         endTime: "",
@@ -13,7 +13,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         subject: "",
         description: "",
         customerImpact: "",
-        nextUpdate: "",
+        nextUpdate: "1Hour",
         driEngaged: "",
         azureCri: "",
         recipients: "",
@@ -301,10 +301,10 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                                 value={formData.nextUpdate}
                                 onChange={handleChange}
                             >
-                                <option value="1hr">1hr</option>
-                                <option value="2hr">2hr</option>
-                                <option value="4hr">4hr</option>
-                                <option value="6hr">6hr</option>
+                                <option value="1hr">1Hour</option>
+                                <option value="2hr">2Hours</option>
+                                <option value="4hr">4Hours</option>
+                                <option value="6hr">6Hours</option>
                             </Form.Control>
                         </Form.Group>
                     </Col>
