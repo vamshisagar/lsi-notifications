@@ -19,7 +19,7 @@ const ViewLsiPage = ({ lsiData, onClose }) => {
             return { backgroundColor: "red", color: "white" };
         }
         if (lsiData.status === "Mitigating") {
-            return { backgroundColor: "yellow", color: "white" };
+            return { backgroundColor: "yellow" };
         }
         if (lsiData.status === "Mitigated") {
             return { backgroundColor: "green", color: "white" };

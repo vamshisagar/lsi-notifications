@@ -5,7 +5,7 @@ import React, {
     forwardRef,
     useImperativeHandle,
 } from "react";
-import { Table, Button, Modal } from "react-bootstrap";
+import { Table, Button, Modal, Badge, Stack } from "react-bootstrap";
 import axios from "axios";
 import EditLsiForm from "./EditLsiForm";
 import EditPreviewPage from "./EditPreviewPage";
@@ -105,7 +105,29 @@ const LsiList = forwardRef((props, ref) => {
                     {lsiList.map((lsi, index) => (
                         <tr key={index}>
                             <td>{lsi.lsi}</td>
-                            <td>{lsi.status}</td>
+                            <td className="align-middle">
+                                {lsi.status === "Investigating" ? (
+                                    <Badge pill bg="danger">
+                                        Investigating
+                                    </Badge>
+                                ) : null}
+                                {lsi.status === "Mitigated" ? (
+                                    <Badge pill bg="success">
+                                        Mitigated
+                                    </Badge>
+                                ) : null}
+                                {lsi.status === "Mitigating" ? (
+                                    <Badge pill bg="warning" text="dark">
+                                        Mitigating
+                                    </Badge>
+                                ) : null}
+                                {/* {lsi.status !== "Investigating" &&
+                                lsi.status !== "Mitigated" &&
+                                lsi.status !== "Mitigating"
+                                    ? lsi.status
+                                    : null} */}
+                            </td>
+                            {/* <td >{lsi.status}</td> */}
                             <td>{lsi.team}</td>
                             <td>{lsi.startTime}</td>
                             <td>
