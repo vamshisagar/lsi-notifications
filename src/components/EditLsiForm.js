@@ -19,14 +19,37 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
         recipients: lsiData.recipients,
     });
 
+    const [errors, setErrors] = useState({});
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        setErrors({ ...errors, [name]: "" }); // Clear error when user starts typing again
+    };
+
+    const validate = () => {
+        const newErrors = {};
+        if (!formData.lsi) newErrors.lsi = "LSI# is required";
+        if (!formData.startTime) newErrors.startTime = "Start time is required";
+        if (!formData.description)
+            newErrors.description = "Description is required";
+        if (!formData.impactType)
+            newErrors.impactType = "Impact Type is required";
+        if (!formData.locations) newErrors.locations = "Locations are required";
+
+        if (formData.status === "Mitigated" && !formData.endTime) {
+            newErrors.endTime = "End time is required";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
 
     const handlePreview = () => {
-        onPreview(formData);
-        onClose();
+        if (validate()) {
+            onPreview(formData);
+            onClose();
+        }
     };
 
     return (
@@ -86,6 +109,11 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                                     value={formData.lsi}
                                     onChange={handleChange}
                                 />
+                                {errors.lsi && (
+                                    <span className="text-danger">
+                                        {errors.lsi}
+                                    </span>
+                                )}
                             </Form.Group>
                         </Col>
                     </Row>
@@ -100,6 +128,11 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                                     value={formData.startTime}
                                     onChange={handleChange}
                                 />
+                                {errors.startTime && (
+                                    <span className="text-danger">
+                                        {errors.startTime}
+                                    </span>
+                                )}
                             </Form.Group>
                         </Col>
                         <Col md={4}>
@@ -112,6 +145,11 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                                         value={formData.endTime}
                                         onChange={handleChange}
                                     />
+                                    {errors.endTime && (
+                                        <span className="text-danger">
+                                            {errors.endTime}
+                                        </span>
+                                    )}
                                 </Form.Group>
                             )}
                         </Col>
@@ -127,6 +165,11 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                                     value={formData.impactType}
                                     onChange={handleChange}
                                 />
+                                {errors.impactType && (
+                                    <span className="text-danger">
+                                        {errors.impactType}
+                                    </span>
+                                )}
                             </Form.Group>
                         </Col>
                         <Col md={6}>
@@ -138,6 +181,11 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                                     value={formData.locations}
                                     onChange={handleChange}
                                 />
+                                {errors.locations && (
+                                    <span className="text-danger">
+                                        {errors.locations}
+                                    </span>
+                                )}
                             </Form.Group>
                         </Col>
                     </Row>
@@ -160,6 +208,11 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                             value={formData.description}
                             onChange={handleChange}
                         />
+                        {errors.description && (
+                            <span className="text-danger">
+                                {errors.description}
+                            </span>
+                        )}
                     </Form.Group>
 
                     <Form.Group className="mt-2">

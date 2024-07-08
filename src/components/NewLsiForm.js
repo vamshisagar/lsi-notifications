@@ -13,11 +13,12 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         subject: "",
         description: "",
         customerImpact: "",
-        nextUpdate: "1Hour",
+        nextUpdate: "1hr",
         driEngaged: "",
         azureCri: "",
         recipients: "",
     });
+
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -38,6 +39,9 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         if (!formData.startTime) newErrors.startTime = "Start time is required";
         if (!formData.description)
             newErrors.description = "Description is required";
+        if (!formData.impactType)
+            newErrors.impactType = "Impact Type is required";
+        if (!formData.locations) newErrors.locations = "Locations are required";
 
         if (formData.status === "Mitigated" && !formData.endTime) {
             newErrors.endTime = "End time is required";
@@ -53,125 +57,58 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         }
     };
 
-    const renderCommonFields = () => (
+    const renderFormFields = () => (
         <>
-            {formData.status === "Investigating" && (
-                <Row>
-                    <Col md={4}>
-                        <Form.Group>
-                            <Form.Label>Team</Form.Label>
-                            <Form.Control
-                                as="select"
-                                name="team"
-                                value={formData.team}
-                                onChange={handleChange}
-                            >
-                                <option value="Application Insights">
-                                    Application Insights
-                                </option>
-                                <option value="Log Analytics">
-                                    Log Analytics
-                                </option>
-                                <option value="Azure Monitoring">
-                                    Azure Monitoring
-                                </option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Col>
-                    <Col md={4}>
-                        <Form.Group>
-                            <Form.Label>Status</Form.Label>
-                            <Form.Control
-                                as="select"
-                                name="status"
-                                value={formData.status}
-                                onChange={handleChange}
-                            >
-                                <option value="Investigating">
-                                    Investigating
-                                </option>
-                                <option value="Mitigating">Mitigating</option>
-                                <option value="Mitigated">Mitigated</option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Col>
-                    <Col md={4}>
-                        <Form.Group>
-                            <Form.Label>LSI#</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="lsi"
-                                value={formData.lsi}
-                                onChange={handleChange}
-                            />
-                            {errors.lsi && (
-                                <span className="text-danger">
-                                    {errors.lsi}
-                                </span>
-                            )}
-                        </Form.Group>
-                    </Col>
-                </Row>
-            )}
-
-            {formData.status !== "Investigating" && (
-                <Row>
-                    <Col md={4}>
-                        <Form.Group>
-                            <Form.Label>Team</Form.Label>
-                            <Form.Control
-                                as="select"
-                                name="team"
-                                value={formData.team}
-                                onChange={handleChange}
-                            >
-                                <option value="Application Insights">
-                                    Application Insights
-                                </option>
-                                <option value="Log Analytics">
-                                    Log Analytics
-                                </option>
-                                <option value="Azure Monitoring">
-                                    Azure Monitoring
-                                </option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Col>
-                    <Col md={4}>
-                        <Form.Group>
-                            <Form.Label>Status</Form.Label>
-                            <Form.Control
-                                as="select"
-                                name="status"
-                                value={formData.status}
-                                onChange={handleChange}
-                            >
-                                <option value="Investigating">
-                                    Investigating
-                                </option>
-                                <option value="Mitigating">Mitigating</option>
-                                <option value="Mitigated">Mitigated</option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Col>
-                    <Col md={4}>
-                        <Form.Group>
-                            <Form.Label>LSI#</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="lsi"
-                                value={formData.lsi}
-                                onChange={handleChange}
-                            />
-                            {errors.lsi && (
-                                <span className="text-danger">
-                                    {errors.lsi}
-                                </span>
-                            )}
-                        </Form.Group>
-                    </Col>
-                </Row>
-            )}
+            <Row>
+                <Col md={4}>
+                    <Form.Group>
+                        <Form.Label>Team</Form.Label>
+                        <Form.Control
+                            as="select"
+                            name="team"
+                            value={formData.team}
+                            onChange={handleChange}
+                        >
+                            <option value="Application Insights">
+                                Application Insights
+                            </option>
+                            <option value="Log Analytics">Log Analytics</option>
+                            <option value="Azure Monitoring">
+                                Azure Monitoring
+                            </option>
+                        </Form.Control>
+                    </Form.Group>
+                </Col>
+                <Col md={4}>
+                    <Form.Group>
+                        <Form.Label>Status</Form.Label>
+                        <Form.Control
+                            as="select"
+                            name="status"
+                            value={formData.status}
+                            onChange={handleChange}
+                        >
+                            <option value="Investigating">Investigating</option>
+                            <option value="Mitigating">Mitigating</option>
+                            <option value="Mitigated">Mitigated</option>
+                        </Form.Control>
+                    </Form.Group>
+                </Col>
+                <Col md={4}>
+                    <Form.Group>
+                        <Form.Label>LSI#</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="lsi"
+                            value={formData.lsi}
+                            onChange={handleChange}
+                        />
+                        {errors.lsi && (
+                            <span className="text-danger">{errors.lsi}</span>
+                        )}
+                    </Form.Group>
+                </Col>
+            </Row>
 
             <Row className="mt-2">
                 <Col md={4}>
@@ -220,6 +157,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                             value={formData.impactType}
                             onChange={handleChange}
                         />
+                        {errors.impactType && (
+                            <span className="text-danger">
+                                {errors.impactType}
+                            </span>
+                        )}
                     </Form.Group>
                 </Col>
                 <Col md={6}>
@@ -231,6 +173,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                             value={formData.locations}
                             onChange={handleChange}
                         />
+                        {errors.locations && (
+                            <span className="text-danger">
+                                {errors.locations}
+                            </span>
+                        )}
                     </Form.Group>
                 </Col>
             </Row>
@@ -301,10 +248,10 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                                 value={formData.nextUpdate}
                                 onChange={handleChange}
                             >
-                                <option value="1hr">1Hour</option>
-                                <option value="2hr">2Hours</option>
-                                <option value="4hr">4Hours</option>
-                                <option value="6hr">6Hours</option>
+                                <option value="1hr">1hr</option>
+                                <option value="2hr">2hr</option>
+                                <option value="4hr">4hr</option>
+                                <option value="6hr">6hr</option>
                             </Form.Control>
                         </Form.Group>
                     </Col>
@@ -325,7 +272,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
 
     return (
         <Form>
-            {renderCommonFields()}
+            {renderFormFields()}
             <Button
                 variant="primary"
                 className="mt-3 me-2"
