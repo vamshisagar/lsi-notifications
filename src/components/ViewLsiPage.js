@@ -2,18 +2,6 @@ import React from "react";
 import { Table, Button } from "react-bootstrap";
 
 const ViewLsiPage = ({ lsiData, onClose }) => {
-    const shouldDisplayRow = (key) => {
-        if (
-            (key === "nextUpdate" &&
-                lsiData.status !== "Investigating" &&
-                lsiData.status !== "Mitigating") ||
-            (key === "endTime" && lsiData.status !== "Mitigated")
-        ) {
-            return false;
-        }
-        return true;
-    };
-
     const getStatusCellStyle = () => {
         if (lsiData.status === "Investigating") {
             return { backgroundColor: "red", color: "white" };
@@ -30,65 +18,66 @@ const ViewLsiPage = ({ lsiData, onClose }) => {
     return (
         <div>
             <p>
-                Subject: {lsiData.team} is Experincing{" "}
-                {lsiData.impactType} in {lsiData.locations}
+                Subject: {lsiData.team} is Experiencing {lsiData.impactType} in{" "}
+                {lsiData.locations}
             </p>
             <Table striped bordered hover className="mt-4">
                 <tbody>
                     <tr>
-                        <td>Status</td>
+                        <td className="first-column">Status</td>
                         <td style={getStatusCellStyle()}>{lsiData.status}</td>
                     </tr>
                     <tr>
-                        <td>LSI Number</td>
+                        <td className="first-column">LSI Number</td>
                         <td>{lsiData.lsi}</td>
                     </tr>
                     <tr>
-                        <td>Team</td>
+                        <td className="first-column">Team</td>
                         <td>{lsiData.team}</td>
                     </tr>
                     <tr>
-                        <td>Start Time</td>
+                        <td className="first-column">Start Time</td>
                         <td>{lsiData.startTime}</td>
                     </tr>
-                    {shouldDisplayRow("endTime") && (
+                    {lsiData.status === "Mitigated" && (
                         <tr>
-                            <td>End Time</td>
+                            <td className="first-column">End Time</td>
                             <td>{lsiData.endTime}</td>
                         </tr>
                     )}
                     <tr>
-                        <td>Impact Type</td>
+                        <td className="first-column">Impact Type</td>
                         <td>{lsiData.impactType}</td>
                     </tr>
                     <tr>
-                        <td>Locations</td>
+                        <td className="first-column">Locations</td>
                         <td>{lsiData.locations}</td>
                     </tr>
                     <tr>
-                        <td>Subject</td>
+                        <td className="first-column">Subject</td>
                         <td>{lsiData.subject}</td>
                     </tr>
                     <tr>
-                        <td>Description</td>
+                        <td className="first-column">Description</td>
                         <td>{lsiData.description}</td>
                     </tr>
-                    {shouldDisplayRow("nextUpdate") && (
+                    {(lsiData.status === "Investigating" ||
+                        lsiData.status === "Mitigating") && (
                         <tr>
-                            <td>Next Update</td>
+                            <td className="first-column">Next Update</td>
                             <td>{lsiData.nextUpdate}</td>
                         </tr>
                     )}
                     <tr>
-                        <td>DRI Engaged</td>
+                        <td className="first-column">DRI Engaged</td>
                         <td>{lsiData.driEngaged}</td>
                     </tr>
                     <tr>
-                        <td>Azure CRI</td>
+                        <td className="first-column">Azure CRI</td>
                         <td>{lsiData.azureCri}</td>
                     </tr>
                     <tr>
-                        <td>Email Recipients</td>
+                        <td className="first-column">Email Recipients</td>
                         <td>{lsiData.recipients}</td>
                     </tr>
                 </tbody>

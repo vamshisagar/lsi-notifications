@@ -27,3 +27,8 @@
     transform: translateY(100%);
     transition: opacity 300ms, transform 300ms;
 }
+
+.first-column {
+    width: 30%; /* 1/3 of the table width */
+    font-weight: bold; /* Optionally, make the first column bold */
+}

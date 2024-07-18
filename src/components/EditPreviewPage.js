@@ -3,27 +3,12 @@ import { Table, Button, Modal } from "react-bootstrap";
 import axios from "axios";
 
 const EditPreviewPage = ({ formData, onClose, onUpdateSuccess }) => {
-    const shouldDisplayRow = (key) => {
-        if (
-            (key === "nextUpdate" &&
-                formData.status !== "Investigating" &&
-                formData.status !== "Mitigating") ||
-            (key === "endTime" && formData.status !== "Mitigated")
-        ) {
-            return false;
-        }
-        return true;
-    };
-
     const handleUpdate = async () => {
         try {
-            // console.log(formData);
-            // console.log(formData.lsi);
             await axios.put(
                 `https://localhost:5001/api/LsiNotification/${formData.lsi}`,
                 formData
             );
-            // alert("Data updated successfully");
             onUpdateSuccess();
             onClose();
         } catch (error) {
@@ -53,62 +38,62 @@ const EditPreviewPage = ({ formData, onClose, onUpdateSuccess }) => {
                 <Table striped bordered hover>
                     <tbody>
                         <tr>
-                            <td>Status</td>
+                            <td className="first-column">Status</td>
                             <td style={getStatusCellStyle()}>
                                 {formData.status}
                             </td>
                         </tr>
                         <tr>
-                            <td>LSI Number</td>
+                            <td className="first-column">LSI Number</td>
                             <td>{formData.lsi}</td>
                         </tr>
                         <tr>
-                            <td>Team</td>
+                            <td className="first-column">Team</td>
                             <td>{formData.team}</td>
                         </tr>
                         <tr>
-                            <td>Start Time</td>
+                            <td className="first-column">Start Time</td>
                             <td>{formData.startTime}</td>
                         </tr>
                         {formData.status === "Mitigated" && (
                             <tr>
-                                <td>End Time</td>
+                                <td className="first-column">End Time</td>
                                 <td>{formData.endTime}</td>
                             </tr>
                         )}
                         <tr>
-                            <td>Impact Type</td>
+                            <td className="first-column">Impact Type</td>
                             <td>{formData.impactType}</td>
                         </tr>
                         <tr>
-                            <td>Locations</td>
+                            <td className="first-column">Locations</td>
                             <td>{formData.locations}</td>
                         </tr>
                         <tr>
-                            <td>Subject</td>
+                            <td className="first-column">Subject</td>
                             <td>{formData.subject}</td>
                         </tr>
                         <tr>
-                            <td>Description</td>
+                            <td className="first-column">Description</td>
                             <td>{formData.description}</td>
                         </tr>
                         {(formData.status === "Investigating" ||
                             formData.status === "Mitigating") && (
                             <tr>
-                                <td>Next Update</td>
+                                <td className="first-column">Next Update</td>
                                 <td>{formData.nextUpdate}</td>
                             </tr>
                         )}
                         <tr>
-                            <td>DRI Engaged</td>
+                            <td className="first-column">DRI Engaged</td>
                             <td>{formData.driEngaged}</td>
                         </tr>
                         <tr>
-                            <td>Azure CRI</td>
+                            <td className="first-column">Azure CRI</td>
                             <td>{formData.azureCri}</td>
                         </tr>
                         <tr>
-                            <td>Email Recipients</td>
+                            <td className="first-column">Email Recipients</td>
                             <td>{formData.recipients}</td>
                         </tr>
                     </tbody>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
+import "../App.css"
 
 const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
     const getStatusCellStyle = () => {
@@ -36,64 +37,64 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
     };
 
     return (
-        <div>
+        <div className="preview-table-container">
             <Table striped bordered hover>
                 <tbody>
                     <tr>
-                        <td>Status</td>
+                        <td className="first-column">Status</td>
                         <td style={getStatusCellStyle()}>{formData.status}</td>
                     </tr>
                     <tr>
-                        <td>LSI Number</td>
+                        <td className="first-column">LSI Number</td>
                         <td>{formData.lsi}</td>
                     </tr>
                     <tr>
-                        <td>Team</td>
+                        <td className="first-column">Team</td>
                         <td>{formData.team}</td>
                     </tr>
                     <tr>
-                        <td>Start Time</td>
+                        <td className="first-column">Start Time</td>
                         <td>{formData.startTime}</td>
                     </tr>
                     {formData.status === "Mitigated" && (
                         <tr>
-                            <td>End Time</td>
+                            <td className="first-column">End Time</td>
                             <td>{formData.endTime}</td>
                         </tr>
                     )}
                     <tr>
-                        <td>Impact Type</td>
+                        <td className="first-column">Impact Type</td>
                         <td>{formData.impactType}</td>
                     </tr>
                     <tr>
-                        <td>Locations</td>
+                        <td className="first-column">Locations</td>
                         <td>{formData.locations}</td>
                     </tr>
                     <tr>
-                        <td>Subject</td>
+                        <td className="first-column">Subject</td>
                         <td>{formData.subject}</td>
                     </tr>
                     <tr>
-                        <td>Description</td>
+                        <td className="first-column">Description</td>
                         <td>{formData.description}</td>
                     </tr>
                     {(formData.status === "Investigating" ||
                         formData.status === "Mitigating") && (
                         <tr>
-                            <td>Next Update</td>
+                            <td className="first-column">Next Update</td>
                             <td>{formData.nextUpdate}</td>
                         </tr>
                     )}
                     <tr>
-                        <td>DRI Engaged</td>
+                        <td className="first-column">DRI Engaged</td>
                         <td>{formData.driEngaged}</td>
                     </tr>
                     <tr>
-                        <td>Azure CRI</td>
+                        <td className="first-column">Azure CRI</td>
                         <td>{formData.azureCri}</td>
                     </tr>
                     <tr>
-                        <td>Email Recipients</td>
+                        <td className="first-column">Email Recipients</td>
                         <td>{formData.recipients}</td>
                     </tr>
                 </tbody>
