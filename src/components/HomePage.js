@@ -164,8 +164,9 @@ const HomePage = () => {
                 </tbody>
             </Table>
 
-            {/* Modals for creating and editing LSIs */}
-            {/* Open NewLsi Form */}
+            {/* Modals for creating and editing and Deleting LSIs */}
+
+            {/* Open New Lsi Form */}
             <Modal
                 show={isFormModalOpen}
                 onHide={closeFormModal}
@@ -183,7 +184,7 @@ const HomePage = () => {
                 </Modal.Body>
             </Modal>
 
-            {/* Open NewLSIPreview Form */}
+            {/* Open New Lsi Preview Form */}
             <Modal
                 show={isPreviewModalOpen}
                 onHide={closePreviewModal}
@@ -204,6 +205,7 @@ const HomePage = () => {
                 </Modal.Body>
             </Modal>
 
+            {/* Open Edit Lsi Form */}
             <Modal
                 show={isEditFormModalOpen}
                 onHide={closeEditFormModal}
@@ -221,6 +223,7 @@ const HomePage = () => {
                 </Modal.Body>
             </Modal>
 
+            {/* Open Edit Lsi Preview Form */}
             <Modal
                 show={isEditPreviewModalOpen}
                 onHide={closeEditPreviewModal}
@@ -241,6 +244,7 @@ const HomePage = () => {
                 </Modal.Body>
             </Modal>
 
+            {/* Open View Lsi Form */}
             <Modal
                 show={isViewModalOpen}
                 onHide={closeViewModal}
@@ -257,6 +261,7 @@ const HomePage = () => {
                 </Modal.Body>
             </Modal>
 
+            {/* Open Delete Lsi Form */}
             <Modal
                 show={isDeleteModalOpen}
                 onHide={closeDeleteModal}

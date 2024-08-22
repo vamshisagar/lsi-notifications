@@ -17,11 +17,8 @@ const ViewLsiPage = ({ lsiData, onClose }) => {
 
     return (
         <div>
-            <p>
-                Subject: {lsiData.team} is Experiencing {lsiData.impactType} in{" "}
-                {lsiData.locations}
-            </p>
-            <Table striped bordered hover className="mt-4">
+            <p>Subject: {lsiData.subject}</p>
+            <Table striped bordered hover className="mt-2">
                 <tbody>
                     <tr>
                         <td className="first-column">Status</td>
