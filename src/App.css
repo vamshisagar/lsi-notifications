@@ -1,7 +1,9 @@
 .custom-modal {
     min-width: 75%;
 }
-
+.custom-modal-delete {
+    min-width: 50%;
+}
 .modal-body {
     overflow-y: hidden;
 }

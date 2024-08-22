@@ -276,7 +276,7 @@ const HomePage = () => {
             <Modal
                 show={isDeleteModalOpen}
                 onHide={closeDeleteModal}
-                dialogClassName="custom-modal"
+                dialogClassName="custom-modal-delete"
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Delete LSI</Modal.Title>
