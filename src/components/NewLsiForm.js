@@ -280,7 +280,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
             >
                 Preview
             </Button>
-            <Button variant="secondary" className="mt-3" onClick={onClose}>
+            <Button
+                variant="outline-secondary"
+                className="mt-3"
+                onClick={onClose}
+            >
                 Close
             </Button>
         </Form>

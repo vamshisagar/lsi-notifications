@@ -100,14 +100,14 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                 </tbody>
             </Table>
             <Button
-                variant="primary"
+                variant="success"
                 className="mt-3 me-2"
                 onClick={handleSend}
             >
                 Send
             </Button>
             <Button
-                variant="secondary"
+                variant="outline-secondary"
                 className="mt-3 me-2"
                 onClick={handleBack}
             >
