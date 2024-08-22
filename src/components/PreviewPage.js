@@ -39,7 +39,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
 
     return (
         <div className="preview-table-container">
-            <div style={{ padding: "20px" }} ref={lsiHtmlRef}>
+            <div ref={lsiHtmlRef}>
                 <h5>Subject : {formData.subject}</h5>
                 <table
                     style={{
@@ -55,7 +55,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -64,7 +64,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             <td
                                 style={{
                                     ...getStatusCellStyle(),
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -76,7 +76,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -84,7 +84,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -96,7 +96,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -104,7 +104,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -116,7 +116,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -124,7 +124,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -137,7 +137,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                     style={{
                                         width: "30%",
                                         backgroundColor: "#f9f9f9",
-                                        padding: "12px",
+                                        padding: "0.5rem 1.5rem",
                                         border: "1px solid #ddd",
                                     }}
                                 >
@@ -145,7 +145,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 </td>
                                 <td
                                     style={{
-                                        padding: "12px",
+                                        padding: "0.5rem 1.5rem",
                                         border: "1px solid #ddd",
                                     }}
                                 >
@@ -158,7 +158,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -166,7 +166,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -178,7 +178,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -186,7 +186,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -198,7 +198,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -206,7 +206,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -218,7 +218,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -226,7 +226,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -240,7 +240,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                     style={{
                                         width: "30%",
                                         backgroundColor: "#f9f9f9",
-                                        padding: "12px",
+                                        padding: "0.5rem 1.5rem",
                                         border: "1px solid #ddd",
                                     }}
                                 >
@@ -248,7 +248,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 </td>
                                 <td
                                     style={{
-                                        padding: "12px",
+                                        padding: "0.5rem 1.5rem",
                                         border: "1px solid #ddd",
                                     }}
                                 >
@@ -261,7 +261,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -269,7 +269,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -281,7 +281,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -289,7 +289,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -301,7 +301,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -309,7 +309,7 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >

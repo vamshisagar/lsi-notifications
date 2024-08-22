@@ -37,7 +37,10 @@ const HomePage = () => {
         fetchLsiList();
     }, []);
 
-    const openFormModal = () => setIsFormModalOpen(true);
+    const openFormModal = () => {
+        setFormData(null);
+        setIsFormModalOpen(true);
+    };
     const closeFormModal = () => setIsFormModalOpen(false);
 
     const openPreviewModal = (data) => {
@@ -95,9 +98,17 @@ const HomePage = () => {
 
     return (
         <div className="container mt-5">
-            <Button onClick={openFormModal} className="mx-3">
-                Create New LSI
-            </Button>
+            <div className="row">
+                <div className="col-6 mt-1">
+                    <h5>List of LSI</h5>
+                </div>
+                <div className="col-6 ">
+                    <div className="d-flex justify-content-end">
+                        <Button onClick={openFormModal}>Create New LSI</Button>
+                    </div>
+                </div>
+            </div>
+
             <Table striped bordered hover className="mt-4">
                 <thead>
                     <tr>

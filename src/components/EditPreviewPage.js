@@ -43,7 +43,7 @@ const EditPreviewPage = ({
 
     return (
         <>
-            <div style={{ padding: "20px" }} ref={lsiHtmlRef}>
+            <div ref={lsiHtmlRef}>
                 <h5>Subject : {formData.subject}</h5>
                 <table
                     style={{
@@ -58,7 +58,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -67,7 +67,7 @@ const EditPreviewPage = ({
                             <td
                                 style={{
                                     ...getStatusCellStyle(),
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -79,7 +79,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -87,7 +87,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -99,7 +99,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -107,7 +107,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -119,7 +119,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -127,7 +127,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -140,7 +140,7 @@ const EditPreviewPage = ({
                                     style={{
                                         width: "30%",
                                         backgroundColor: "#f9f9f9",
-                                        padding: "12px",
+                                        padding: "0.5rem 1.5rem",
                                         border: "1px solid #ddd",
                                     }}
                                 >
@@ -148,7 +148,7 @@ const EditPreviewPage = ({
                                 </td>
                                 <td
                                     style={{
-                                        padding: "12px",
+                                        padding: "0.5rem 1.5rem",
                                         border: "1px solid #ddd",
                                     }}
                                 >
@@ -161,7 +161,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -169,7 +169,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -181,7 +181,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -189,7 +189,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -201,7 +201,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -209,7 +209,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -221,7 +221,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -229,7 +229,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -243,7 +243,7 @@ const EditPreviewPage = ({
                                     style={{
                                         width: "30%",
                                         backgroundColor: "#f9f9f9",
-                                        padding: "12px",
+                                        padding: "0.5rem 1.5rem",
                                         border: "1px solid #ddd",
                                     }}
                                 >
@@ -251,7 +251,7 @@ const EditPreviewPage = ({
                                 </td>
                                 <td
                                     style={{
-                                        padding: "12px",
+                                        padding: "0.5rem 1.5rem",
                                         border: "1px solid #ddd",
                                     }}
                                 >
@@ -264,7 +264,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -272,7 +272,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -284,7 +284,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -292,7 +292,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -304,7 +304,7 @@ const EditPreviewPage = ({
                                 style={{
                                     width: "30%",
                                     backgroundColor: "#f9f9f9",
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
@@ -312,7 +312,7 @@ const EditPreviewPage = ({
                             </td>
                             <td
                                 style={{
-                                    padding: "12px",
+                                    padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
