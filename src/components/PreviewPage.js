@@ -39,9 +39,10 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
 
     return (
         <div className="preview-table-container">
-            <div ref={lsiHtmlRef}>
+            <div>
                 <h5>Subject : {formData.subject}</h5>
                 <table
+                    ref={lsiHtmlRef}
                     style={{
                         width: "100%",
                         borderCollapse: "collapse",

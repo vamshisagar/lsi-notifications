@@ -11,7 +11,7 @@ const DeleteLsiPage = ({ lsiData, onDelete, onClose }) => {
     return (
         <div>
             <p>
-                Are you sure you want to delete the LSI record with Lsi{" "}
+                Are you sure you want to delete the LSI record with LSI {" "}
                 {lsiData.lsi}?
             </p>
             <Button variant="danger" onClick={handleDelete}>

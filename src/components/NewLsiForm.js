@@ -76,6 +76,15 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                             <option value="Azure Monitoring">
                                 Azure Monitoring
                             </option>
+                            <option value="Azure Alerting">
+                                Azure Alerting
+                            </option>
+                            <option value="Geneva Monitoring">
+                                Geneva Monitoring
+                            </option>
+                            <option value="Azure Sentinel">
+                                Geneva Monitoring
+                            </option>
                         </Form.Control>
                     </Form.Group>
                 </Col>
