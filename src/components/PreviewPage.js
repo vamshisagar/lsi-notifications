@@ -4,6 +4,7 @@ import axios from "axios";
 import "../App.css";
 
 const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
+    console.log(formData)
     const lsiHtmlRef = useRef(null);
     const getStatusCellStyle = () => {
         if (formData.status === "Investigating") {
@@ -109,7 +110,9 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
                                     border: "1px solid #ddd",
                                 }}
                             >
-                                {formData.team}
+                                {formData.team
+                                    .map((team) => team)
+                                    .join(", ")}
                             </td>
                         </tr>
                         <tr>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import Select from "react-select";
 
 const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     const [formData, setFormData] = useState({
-        team: "Application Insights",
+        team: [],
         status: "Investigating",
         lsi: "",
         startTime: "",
@@ -21,9 +22,24 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
 
     const [errors, setErrors] = useState({});
 
+    const teamOptions = [
+        { value: "Application Insights", label: "Application Insights" },
+        { value: "Log Analytics", label: "Log Analytics" },
+        { value: "Azure Monitoring", label: "Azure Monitoring" },
+        { value: "Azure Alerting", label: "Azure Alerting" },
+        { value: "Geneva Monitoring", label: "Geneva Monitoring" },
+        { value: "Azure Sentinel", label: "Azure Sentinel" },
+    ];
+
     useEffect(() => {
         if (initialData) {
-            setFormData(initialData);
+            setFormData({
+                ...initialData,
+                team: initialData.team.map((team) => ({
+                    value: team,
+                    label: team,
+                })),
+            });
         }
     }, [initialData]);
 
@@ -31,6 +47,13 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
         setErrors({ ...errors, [name]: "" });
+    };
+
+    const handleTeamChange = (selectedOptions) => {
+        setFormData({
+            ...formData,
+            team: selectedOptions || [],
+        });
     };
 
     const validate = () => {
@@ -52,7 +75,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
 
     const handlePreview = () => {
         if (validate()) {
-            onPreview(formData);
+            const dataToPreview = {
+                ...formData,
+                team: formData.team.map((option) => option.value),
+            };
+            onPreview(dataToPreview);
             onClose();
         }
     };
@@ -63,29 +90,15 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 <Col md={4}>
                     <Form.Group>
                         <Form.Label>Team</Form.Label>
-                        <Form.Control
-                            as="select"
+                        <Select
+                            isMulti
                             name="team"
+                            options={teamOptions}
                             value={formData.team}
-                            onChange={handleChange}
-                        >
-                            <option value="Application Insights">
-                                Application Insights
-                            </option>
-                            <option value="Log Analytics">Log Analytics</option>
-                            <option value="Azure Monitoring">
-                                Azure Monitoring
-                            </option>
-                            <option value="Azure Alerting">
-                                Azure Alerting
-                            </option>
-                            <option value="Geneva Monitoring">
-                                Geneva Monitoring
-                            </option>
-                            <option value="Azure Sentinel">
-                                Geneva Monitoring
-                            </option>
-                        </Form.Control>
+                            onChange={handleTeamChange}
+                            className="basic-multi-select"
+                            classNamePrefix="select"
+                        />
                     </Form.Group>
                 </Col>
                 <Col md={4}>
