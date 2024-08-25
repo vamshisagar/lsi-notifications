@@ -7,6 +7,7 @@ import EditLsiForm from "./EditLsiForm";
 import EditPreviewPage from "./EditPreviewPage";
 import ViewLsiPage from "./ViewLsiPage";
 import DeleteLsiPage from "./DeleteLsiPage";
+import ViewLsiPageHtml from "./ViewLsiPageHtml";
 
 const HomePage = () => {
     const [lsiList, setLsiList] = useState([]);
@@ -264,7 +265,8 @@ const HomePage = () => {
             </Modal>
 
             {/* Open View Lsi Form */}
-            <Modal
+            
+            {/* <Modal
                 show={isViewModalOpen}
                 onHide={closeViewModal}
                 dialogClassName="custom-modal"
@@ -274,6 +276,23 @@ const HomePage = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <ViewLsiPage
+                        lsiData={viewLsiData}
+                        onClose={closeViewModal}
+                    />
+                </Modal.Body>
+            </Modal> */}
+
+            {/* Open view LSI Html form  */}
+            <Modal
+                show={isViewModalOpen}
+                onHide={closeViewModal}
+                dialogClassName="custom-modal"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>View LSI</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <ViewLsiPageHtml
                         lsiData={viewLsiData}
                         onClose={closeViewModal}
                     />

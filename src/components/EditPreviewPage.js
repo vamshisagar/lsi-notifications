@@ -12,9 +12,13 @@ const EditPreviewPage = ({
     const handleUpdate = async () => {
         try {
             console.log(lsiHtmlRef.current.outerHTML);
+            const newformData = {
+                ...formData,
+                lsiHtml: lsiHtmlRef.current.outerHTML,
+            };
             await axios.put(
                 `https://localhost:5001/api/LsiNotification/${formData.lsi}`,
-                formData
+                newformData
             );
 
             fetchLsiItem();

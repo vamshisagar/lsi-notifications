@@ -17,6 +17,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         driEngaged: "",
         azureCri: "",
         recipients: "",
+        lsiHtml:""
     });
 
     const [errors, setErrors] = useState({});
