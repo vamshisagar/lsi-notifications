@@ -106,7 +106,7 @@ const HomePage = () => {
                     <div className="d-flex justify-content-end">
                         <Button onClick={openFormModal}>
                             Create New LSI{" "}
-                            <i class="bi bi-plus-circle-fill"></i>
+                            <i className="bi bi-plus-circle-fill"></i>
                         </Button>
                     </div>
                 </div>
@@ -166,7 +166,7 @@ const HomePage = () => {
                                     className="me-2"
                                     onClick={() => openEditFormModal(lsi)}
                                 >
-                                    <i class="bi bi-pencil-square"></i>Edit
+                                    <i className="bi bi-pencil-square"></i>Edit
                                 </Button>
                                 <Button
                                     variant="danger"
@@ -174,7 +174,7 @@ const HomePage = () => {
                                     className="sm"
                                     onClick={() => openDeleteModal(lsi)}
                                 >
-                                    <i class="bi bi-trash3"></i>Delete
+                                    <i className="bi bi-trash3"></i>Delete
                                 </Button>
                             </td>
                         </tr>

@@ -329,7 +329,7 @@ const EditPreviewPage = ({
                     className="mt-3 me-2"
                     onClick={handleUpdate}
                 >
-                    <i class="bi bi-send-plus"></i> Send
+                    <i className="bi bi-send-plus"></i> Send
                 </Button>
                 <Button
                     variant="outline-secondary"
