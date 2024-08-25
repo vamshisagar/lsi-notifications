@@ -27,6 +27,55 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         }
     }, [initialData]);
 
+    const generateInvestigatingDescription = (team, locations, impactType) => {
+        return `${team} in ${locations} is Experiencing ${impactType}. We are aware of the issue and currently investigating it.`;
+    };
+    const generateMitigatedDescription = (team, locations, impactType) => {
+        return `Issue Stands Mitigated
+        Mitigated Steps: <Write Mitigation steps>
+        Customer Impact: <Write Customer Impact statement>
+        Communications : <Write Different types of Communication Posted>`;
+    };
+    const generateSubject = (team, locations, impactType) => {
+        return `${team} in ${locations} is Experiencing ${impactType}`;
+    };
+
+    // Update the description whenever team, status, impactType, or locations change
+    useEffect(() => {
+        const { team, status, impactType, locations } = formData;
+        if (status === "Investigating" && team && locations && impactType) {
+            setFormData((prevData) => ({
+                ...prevData,
+                description: generateInvestigatingDescription(
+                    team,
+                    locations,
+                    impactType
+                ),
+            }));
+        }
+        if (status === "Mitigated" && team && locations && impactType) {
+            setFormData((prevData) => ({
+                ...prevData,
+                description: generateMitigatedDescription(
+                    team,
+                    locations,
+                    impactType
+                ),
+            }));
+        }
+        if (status && team && locations && impactType) {
+            setFormData((prevData) => ({
+                ...prevData,
+                subject: generateSubject(team, locations, impactType),
+            }));
+        }
+    }, [
+        formData.team,
+        formData.status,
+        formData.impactType,
+        formData.locations,
+    ]);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
