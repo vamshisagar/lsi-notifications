@@ -104,7 +104,10 @@ const HomePage = () => {
                 </div>
                 <div className="col-6 ">
                     <div className="d-flex justify-content-end">
-                        <Button onClick={openFormModal}>Create New LSI</Button>
+                        <Button onClick={openFormModal}>
+                            Create New LSI{" "}
+                            <i class="bi bi-plus-circle-fill"></i>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -151,23 +154,27 @@ const HomePage = () => {
                             <td>
                                 <Button
                                     variant="info"
+                                    size="sm"
                                     className="me-2"
                                     onClick={() => openViewModal(lsi)}
                                 >
-                                    View
+                                    <i className="bi bi-eye"></i>View
                                 </Button>
                                 <Button
                                     variant="warning"
+                                    size="sm"
                                     className="me-2"
                                     onClick={() => openEditFormModal(lsi)}
                                 >
-                                    Edit
+                                    <i class="bi bi-pencil-square"></i>Edit
                                 </Button>
                                 <Button
                                     variant="danger"
+                                    size="sm"
+                                    className="sm"
                                     onClick={() => openDeleteModal(lsi)}
                                 >
-                                    Delete
+                                    <i class="bi bi-trash3"></i>Delete
                                 </Button>
                             </td>
                         </tr>
@@ -182,6 +189,7 @@ const HomePage = () => {
                 show={isFormModalOpen}
                 onHide={closeFormModal}
                 dialogClassName="custom-modal"
+                backdrop="static"
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Create New LSI</Modal.Title>

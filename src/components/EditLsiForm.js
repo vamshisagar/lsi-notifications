@@ -283,7 +283,7 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                 className="mt-3 me-2"
                 onClick={handlePreview}
             >
-                Preview
+                <i class="bi bi-eye"></i> Preview
             </Button>
             <Button
                 variant="outline-secondary"
