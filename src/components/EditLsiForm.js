@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
 
 const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
@@ -26,6 +26,54 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
         setFormData({ ...formData, [name]: value });
         setErrors({ ...errors, [name]: "" }); // Clear error when user starts typing again
     };
+
+    const generateInvestigatingDescription = (team, locations, impactType) => {
+        return `${team} in ${locations} is Experiencing ${impactType}. We are aware of the issue and currently investigating it.`;
+    };
+    const generateMitigatedDescription = (team, locations, impactType) => {
+        return `Issue Stands Mitigated
+        Mitigated Steps: <Write Mitigation steps>
+        Customer Impact: <Write Customer Impact statement>
+        Communications : <Write Different types of Communication Posted>`;
+    };
+    const generateSubject = (team, locations, impactType) => {
+        return `${team} in ${locations} is Experiencing ${impactType}`;
+    };
+
+    useEffect(() => {
+        const { team, status, impactType, locations } = formData;
+        if (status === "Investigating" && team && locations && impactType) {
+            setFormData((prevData) => ({
+                ...prevData,
+                description: generateInvestigatingDescription(
+                    team,
+                    locations,
+                    impactType
+                ),
+            }));
+        }
+        if (status === "Mitigated" && team && locations && impactType) {
+            setFormData((prevData) => ({
+                ...prevData,
+                description: generateMitigatedDescription(
+                    team,
+                    locations,
+                    impactType
+                ),
+            }));
+        }
+        if (status && team && locations && impactType) {
+            setFormData((prevData) => ({
+                ...prevData,
+                subject: generateSubject(team, locations, impactType),
+            }));
+        }
+    }, [
+        formData.team,
+        formData.status,
+        formData.impactType,
+        formData.locations,
+    ]);
 
     const validate = () => {
         const newErrors = {};
