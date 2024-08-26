@@ -11,7 +11,7 @@ import ViewLsiPageHtml from "./ViewLsiPageHtml";
 import intialLsiData from "../initialLsiData";
 
 const HomePage = () => {
-    const [lsiList, setLsiList] = useState([]);
+    const [lsiList, setLsiList] = useState(intialLsiData);
     const [formData, setFormData] = useState(null);
     const [editLsiData, setEditLsiData] = useState(null);
     const [viewLsiData, setViewLsiData] = useState(null);
