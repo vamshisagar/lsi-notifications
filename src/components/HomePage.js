@@ -8,6 +8,7 @@ import EditPreviewPage from "./EditPreviewPage";
 import ViewLsiPage from "./ViewLsiPage";
 import DeleteLsiPage from "./DeleteLsiPage";
 import ViewLsiPageHtml from "./ViewLsiPageHtml";
+import intialLsiData from "../initialLsiData";
 
 const HomePage = () => {
     const [lsiList, setLsiList] = useState([]);
@@ -23,20 +24,44 @@ const HomePage = () => {
     const [isViewModalOpen, setIsViewModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-    const fetchLsiList = async () => {
-        try {
-            const response = await axios.get(
-                "https://localhost:5001/api/LsiNotification"
-            );
-            setLsiList(response.data);
-        } catch (error) {
-            console.error("Error fetching LSI list:", error);
-        }
+    // const fetchLsiList = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             "https://localhost:5001/api/LsiNotification"
+    //         );
+    //         setLsiList(response.data);
+    //     } catch (error) {
+    //         console.error("Error fetching LSI list:", error);
+    //     }
+    // };
+
+    useEffect(() => {}, [intialLsiData]);
+
+    const addLsi = (newLsi) => {
+        setLsiList([...lsiList, newLsi]);
     };
 
-    useEffect(() => {
-        fetchLsiList();
-    }, []);
+    const updateLsi = (updatedLsi) => {
+        console.log(lsiList); // Logs the current state of the LSI list
+        setLsiList(
+            lsiList.map((lsi) => {
+                if (lsi.lsi === updatedLsi.lsi) {
+                    // Update the LSI with new data
+                    return {
+                        ...updatedLsi,
+                        lsiHtml:
+                            (updatedLsi.lsiHtml || "") + (lsi.lsiHtml || ""), // Concatenate lsiHtml if both exist
+                    };
+                }
+                // Return the original LSI if it does not match the updated LSI
+                return lsi;
+            })
+        );
+    };
+
+    const deleteLsi = (lsiNumber) => {
+        setLsiList(lsiList.filter((lsi) => lsi.lsi !== lsiNumber));
+    };
 
     const openFormModal = () => {
         setFormData(null);
@@ -87,14 +112,7 @@ const HomePage = () => {
     const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
     const handleDelete = async (id) => {
-        try {
-            await axios.delete(
-                `https://localhost:5001/api/LsiNotification/${id}`
-            );
-            fetchLsiList();
-        } catch (error) {
-            console.error("Error deleting LSI record:", error);
-        }
+        deleteLsi(id);
     };
 
     return (
@@ -125,6 +143,7 @@ const HomePage = () => {
                     </tr>
                 </thead>
                 <tbody>
+                    {console.log(lsiList)}
                     {lsiList.map((lsi, index) => (
                         <tr key={index}>
                             <td>{lsi.lsi}</td>
@@ -219,7 +238,8 @@ const HomePage = () => {
                             formData={formData}
                             onClose={closePreviewModal}
                             onBack={handleBackToForm}
-                            onSendSuccess={fetchLsiList}
+                            // onSendSuccess={fetchLsiList}
+                            addLsi={addLsi}
                         />
                     )}
                 </Modal.Body>
@@ -257,15 +277,16 @@ const HomePage = () => {
                         <EditPreviewPage
                             formData={editLsiData}
                             onBack={handleBackToEditForm}
-                            fetchLsiItem={fetchLsiList}
+                            // fetchLsiItem={fetchLsiList}
                             backtoHomePage={closeEditPreviewModal}
+                            updateLsi={updateLsi}
                         />
                     }
                 </Modal.Body>
             </Modal>
 
             {/* Open View Lsi Form */}
-            
+
             {/* <Modal
                 show={isViewModalOpen}
                 onHide={closeViewModal}

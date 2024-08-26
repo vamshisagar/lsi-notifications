@@ -7,25 +7,32 @@ const EditPreviewPage = ({
     onBack,
     fetchLsiItem,
     backtoHomePage,
+    updateLsi
 }) => {
     const lsiHtmlRef = useRef(null);
     const handleUpdate = async () => {
-        try {
-            console.log(lsiHtmlRef.current.outerHTML);
-            const newformData = {
-                ...formData,
-                lsiHtml: lsiHtmlRef.current.outerHTML,
-            };
-            await axios.put(
-                `https://localhost:5001/api/LsiNotification/${formData.lsi}`,
-                newformData
-            );
+        // try {
+        //     console.log(lsiHtmlRef.current.outerHTML);
+        //     const newformData = {
+        //         ...formData,
+        //         lsiHtml: lsiHtmlRef.current.outerHTML,
+        //     };
+        //     await axios.put(
+        //         `https://localhost:5001/api/LsiNotification/${formData.lsi}`,
+        //         newformData
+        //     );
 
-            fetchLsiItem();
-            backtoHomePage();
-        } catch (error) {
-            alert("Error updating LSI");
-        }
+        //     fetchLsiItem();
+        //     backtoHomePage();
+        // } catch (error) {
+        //     alert("Error updating LSI");
+        // }
+        const newformData = {
+            ...formData,
+            lsiHtml: lsiHtmlRef.current.outerHTML,
+        };
+        updateLsi(newformData);
+        backtoHomePage();
     };
 
     const getStatusCellStyle = () => {

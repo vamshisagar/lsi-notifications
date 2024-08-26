@@ -3,7 +3,7 @@ import { Table, Button } from "react-bootstrap";
 import axios from "axios";
 import "../App.css";
 
-const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
+const PreviewPage = ({ formData, onClose, onBack, onSendSuccess, addLsi }) => {
     const lsiHtmlRef = useRef(null);
     const getStatusCellStyle = () => {
         if (formData.status === "Investigating") {
@@ -19,22 +19,29 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess }) => {
     };
 
     const handleSend = async () => {
-        try {
-            console.log(lsiHtmlRef.current.outerHTML);
-            const newformData = {
-                ...formData,
-                lsiHtml: lsiHtmlRef.current.outerHTML,
-            };
-            await axios.post(
-                "https://localhost:5001/api/LsiNotification",
-                newformData
-            ); // Adjust the URL based on your .NET API configuration
-            // alert("Data sent successfully");
-            onClose();
-            onSendSuccess();
-        } catch (error) {
-            alert("Error sending data");
-        }
+        // try {
+        //     console.log(lsiHtmlRef.current.outerHTML);
+        //     const newformData = {
+        //         ...formData,
+        //         lsiHtml: lsiHtmlRef.current.outerHTML,
+        //     };
+        //     await axios.post(
+        //         "https://localhost:5001/api/LsiNotification",
+        //         newformData
+        //     ); // Adjust the URL based on your .NET API configuration
+        //     // alert("Data sent successfully");
+        //     onClose();
+        //     onSendSuccess();
+        // } catch (error) {
+        //     alert("Error sending data");
+        // }
+        const newformData = {
+            ...formData,
+            lsiHtml: lsiHtmlRef.current.outerHTML,
+        };
+        addLsi(newformData);
+        onClose();
+        // onSendSuccess();
     };
 
     const handleBack = () => {
