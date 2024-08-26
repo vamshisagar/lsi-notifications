@@ -50,7 +50,9 @@ const HomePage = () => {
                     return {
                         ...updatedLsi,
                         lsiHtml:
-                            (updatedLsi.lsiHtml || "") + (lsi.lsiHtml || ""), // Concatenate lsiHtml if both exist
+                            (updatedLsi.lsiHtml || "") +
+                            "<br><hr><br>" +
+                            (lsi.lsiHtml || ""), // Concatenate lsiHtml if both exist
                     };
                 }
                 // Return the original LSI if it does not match the updated LSI
