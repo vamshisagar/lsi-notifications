@@ -7,7 +7,7 @@ const EditPreviewPage = ({
     onBack,
     fetchLsiItem,
     backtoHomePage,
-    updateLsi
+    updateLsi,
 }) => {
     const lsiHtmlRef = useRef(null);
     const handleUpdate = async () => {
@@ -244,8 +244,11 @@ const EditPreviewPage = ({
                                     padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
+                                dangerouslySetInnerHTML={{
+                                    __html: formData.description,
+                                }}
                             >
-                                {formData.description}
+                                {/* {formData.description} */}
                             </td>
                         </tr>
                         {(formData.status === "Investigating" ||

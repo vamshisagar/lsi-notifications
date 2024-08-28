@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css'; // import styles
 
 const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     const [formData, setFormData] = useState({
@@ -17,7 +19,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         driEngaged: "",
         azureCri: "",
         recipients: "",
-        lsiHtml:""
+        lsiHtml: "",
     });
 
     const [errors, setErrors] = useState({});
@@ -83,6 +85,12 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         setErrors({ ...errors, [name]: "" });
     };
 
+    const handleDescriptionChange = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            description: value,
+        }));
+    };
     const validate = () => {
         const newErrors = {};
         if (!formData.lsi) newErrors.lsi = "LSI# is required";
@@ -251,13 +259,24 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 />
             </Form.Group>
 
-            <Form.Group className="mt-2">
+            {/* <Form.Group className="mt-2">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                     as="textarea"
                     name="description"
                     value={formData.description}
                     onChange={handleChange}
+                />
+                {errors.description && (
+                    <span className="text-danger">{errors.description}</span>
+                )}
+            </Form.Group> */}
+            <Form.Group className="mt-2">
+                <Form.Label>Description</Form.Label>
+                <ReactQuill
+                    value={formData.description}
+                    onChange={handleDescriptionChange}
+                    theme="snow"
                 />
                 {errors.description && (
                     <span className="text-danger">{errors.description}</span>

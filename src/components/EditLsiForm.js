@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css"; // import styles
 
 const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
     const [formData, setFormData] = useState({
@@ -27,6 +29,13 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
         setErrors({ ...errors, [name]: "" }); // Clear error when user starts typing again
     };
 
+    const handleDescriptionChange = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            description: value,
+        }));
+    };
+
     const generateInvestigatingDescription = (team, locations, impactType) => {
         return `${team} in ${locations} is Experiencing ${impactType}. We are aware of the issue and currently investigating it.`;
     };
@@ -40,40 +49,40 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
         return `${team} in ${locations} is Experiencing ${impactType}`;
     };
 
-    useEffect(() => {
-        const { team, status, impactType, locations } = formData;
-        if (status === "Investigating" && team && locations && impactType) {
-            setFormData((prevData) => ({
-                ...prevData,
-                description: generateInvestigatingDescription(
-                    team,
-                    locations,
-                    impactType
-                ),
-            }));
-        }
-        if (status === "Mitigated" && team && locations && impactType) {
-            setFormData((prevData) => ({
-                ...prevData,
-                description: generateMitigatedDescription(
-                    team,
-                    locations,
-                    impactType
-                ),
-            }));
-        }
-        if (status && team && locations && impactType) {
-            setFormData((prevData) => ({
-                ...prevData,
-                subject: generateSubject(team, locations, impactType),
-            }));
-        }
-    }, [
-        formData.team,
-        formData.status,
-        formData.impactType,
-        formData.locations,
-    ]);
+    // useEffect(() => {
+    //     const { team, status, impactType, locations } = formData;
+    //     if (status === "Investigating" && team && locations && impactType) {
+    //         setFormData((prevData) => ({
+    //             ...prevData,
+    //             description: generateInvestigatingDescription(
+    //                 team,
+    //                 locations,
+    //                 impactType
+    //             ),
+    //         }));
+    //     }
+    //     if (status === "Mitigated" && team && locations && impactType) {
+    //         setFormData((prevData) => ({
+    //             ...prevData,
+    //             description: generateMitigatedDescription(
+    //                 team,
+    //                 locations,
+    //                 impactType
+    //             ),
+    //         }));
+    //     }
+    //     if (status && team && locations && impactType) {
+    //         setFormData((prevData) => ({
+    //             ...prevData,
+    //             subject: generateSubject(team, locations, impactType),
+    //         }));
+    //     }
+    // }, [
+    //     formData.team,
+    //     formData.status,
+    //     formData.impactType,
+    //     formData.locations,
+    // ]);
 
     const validate = () => {
         const newErrors = {};
@@ -244,13 +253,26 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                     />
                 </Form.Group>
 
-                <Form.Group className="mt-2">
+                {/* <Form.Group className="mt-2">
                     <Form.Label>Description</Form.Label>
                     <Form.Control
                         as="textarea"
                         name="description"
                         value={formData.description || ""}
                         onChange={handleChange}
+                    />
+                    {errors.description && (
+                        <span className="text-danger">
+                            {errors.description}
+                        </span>
+                    )}
+                </Form.Group> */}
+                <Form.Group className="mt-2">
+                    <Form.Label>Description</Form.Label>
+                    <ReactQuill
+                        value={formData.description}
+                        onChange={handleDescriptionChange}
+                        theme="snow"
                     />
                     {errors.description && (
                         <span className="text-danger">

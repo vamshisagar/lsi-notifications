@@ -236,14 +236,23 @@ const PreviewPage = ({ formData, onClose, onBack, onSendSuccess, addLsi }) => {
                             >
                                 Description
                             </td>
-                            <td
+                            {/* <td
                                 style={{
                                     padding: "0.5rem 1.5rem",
                                     border: "1px solid #ddd",
                                 }}
                             >
                                 {formData.description}
-                            </td>
+                            </td> */}
+                            <td
+                                style={{
+                                    padding: "0.5rem 1.5rem",
+                                    border: "1px solid #ddd",
+                                }}
+                                dangerouslySetInnerHTML={{
+                                    __html: formData.description,
+                                }}
+                            ></td>
                         </tr>
                         {(formData.status === "Investigating" ||
                             formData.status === "Mitigating") && (
