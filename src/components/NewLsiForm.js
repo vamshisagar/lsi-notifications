@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css'; // import styles
+import "react-quill/dist/quill.snow.css"; // import styles
 
 const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     const [formData, setFormData] = useState({
@@ -277,13 +277,14 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                     value={formData.description}
                     onChange={handleDescriptionChange}
                     theme="snow"
+                    style={{ height: "120px" }}
                 />
                 {errors.description && (
                     <span className="text-danger">{errors.description}</span>
                 )}
             </Form.Group>
 
-            <Form.Group className="mt-2">
+            <Form.Group className="mt-5">
                 <Form.Label>Customer Impact</Form.Label>
                 <Form.Control
                     as="textarea"
