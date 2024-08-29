@@ -1,6 +1,8 @@
 const intialLsiData = [
     {
-        team: "Application Insights",
+        team: [
+            { label: "Application Insights", value: "Application Insights" },
+        ],
         status: "Investigating",
         lsi: "1",
         startTime: "2024-08-01T12:06",
@@ -19,7 +21,9 @@ const intialLsiData = [
             '<table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; border: 1px solid rgb(222, 226, 230);"><tbody><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Status</td><td style="background-color: red; color: white; padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Investigating</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">LSI Number</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">1</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Team</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Application Insights</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Start Time</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">2024-08-01T12:06</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Impact Type</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Data Loss</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Locations</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">East-Us</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Subject</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Application Insights in East-Us is Experiencing Data Loss</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Description</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Application Insights in East-Us is Experiencing Data Loss. We are aware of the issue and currently investigating it.</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Next Update</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">1hr</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">DRI Engaged</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Vamshi</td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Azure CRI</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);"></td></tr><tr><td style="width: 30%; background-color: rgb(249, 249, 249); padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);">Email Recipients</td><td style="padding: 0.5rem 1.5rem; border: 1px solid rgb(221, 221, 221);"></td></tr></tbody></table>',
     },
     {
-        team: "Application Insights",
+        team: [
+            { label: "Application Insights", value: "Application Insights" },
+        ],
         status: "Mitigated",
         lsi: "123",
         startTime: "2024-08-01T12:14",

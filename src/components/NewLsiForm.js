@@ -2,10 +2,22 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // import styles
+import { MultiSelect } from "react-multi-select-component";
+
+const teamOptions = [
+    { label: "Application Insights", value: "Application Insights" },
+    { label: "Log Analytics", value: "Log Analytics" },
+    { label: "Azure Monitoring", value: "Azure Monitoring" },
+    { label: "Azure Alerting", value: "Azure Alerting" },
+    { label: "Geneva Monitoring", value: "Geneva Monitoring" },
+    { label: "Azure Sentinel", value: "Azure Sentinel" },
+];
 
 const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     const [formData, setFormData] = useState({
-        team: "Application Insights",
+        team: [
+            { label: "Application Insights", value: "Application Insights" },
+        ],
         status: "Investigating",
         lsi: "",
         startTime: "",
@@ -31,7 +43,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     }, [initialData]);
 
     const generateInvestigatingDescription = (team, locations, impactType) => {
-        return `${team} in ${locations} is Experiencing ${impactType}. We are aware of the issue and currently investigating it.`;
+        return `${team
+            .map((option) => option.label)
+            .join(
+                ", "
+            )} in ${locations} is Experiencing ${impactType}. We are aware of the issue and currently investigating it.`;
     };
     const generateMitigatedDescription = (team, locations, impactType) => {
         return `Issue Stands Mitigated
@@ -40,7 +56,9 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         Communications : <Write Different types of Communication Posted>`;
     };
     const generateSubject = (team, locations, impactType) => {
-        return `${team} in ${locations} is Experiencing ${impactType}`;
+        return `${team
+            .map((option) => option.label)
+            .join(", ")} in ${locations} is Experiencing ${impactType}`;
     };
 
     // Update the description whenever team, status, impactType, or locations change
@@ -91,6 +109,14 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
             description: value,
         }));
     };
+
+    const handleTeamChange = (selected) => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            team: selected, // Update with the selected options array
+        }));
+    };
+
     const validate = () => {
         const newErrors = {};
         if (!formData.lsi) newErrors.lsi = "LSI# is required";
@@ -121,29 +147,12 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                 <Col md={4}>
                     <Form.Group>
                         <Form.Label>Team</Form.Label>
-                        <Form.Control
-                            as="select"
-                            name="team"
+                        <MultiSelect
+                            options={teamOptions}
                             value={formData.team}
-                            onChange={handleChange}
-                        >
-                            <option value="Application Insights">
-                                Application Insights
-                            </option>
-                            <option value="Log Analytics">Log Analytics</option>
-                            <option value="Azure Monitoring">
-                                Azure Monitoring
-                            </option>
-                            <option value="Azure Alerting">
-                                Azure Alerting
-                            </option>
-                            <option value="Geneva Monitoring">
-                                Geneva Monitoring
-                            </option>
-                            <option value="Azure Sentinel">
-                                Geneva Monitoring
-                            </option>
-                        </Form.Control>
+                            onChange={handleTeamChange}
+                            labelledBy="Select Team"
+                        />
                     </Form.Group>
                 </Col>
                 <Col md={4}>

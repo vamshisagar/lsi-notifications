@@ -9,6 +9,7 @@ const EditPreviewPage = ({
     backtoHomePage,
     updateLsi,
 }) => {
+    console.log(formData);
     const lsiHtmlRef = useRef(null);
     const handleUpdate = async () => {
         // try {
@@ -123,7 +124,9 @@ const EditPreviewPage = ({
                                     border: "1px solid #ddd",
                                 }}
                             >
-                                {formData.team}
+                                {formData.team
+                                    .map((item) => item.label)
+                                    .join(",")}
                             </td>
                         </tr>
                         <tr>

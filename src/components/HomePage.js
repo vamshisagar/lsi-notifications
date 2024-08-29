@@ -166,7 +166,7 @@ const HomePage = () => {
                                     </Badge>
                                 )}
                             </td>
-                            <td>{lsi.team}</td>
+                            <td>{lsi.team.map((item)=>item.label).join(",")}</td>
                             <td>{lsi.startTime}</td>
                             <td>
                                 {lsi.status === "Mitigated"
