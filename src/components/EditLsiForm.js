@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // import styles
 import { MultiSelect } from "react-multi-select-component";
-
 
 const teamOptions = [
     { label: "Application Insights", value: "Application Insights" },
@@ -47,59 +46,7 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
         }));
     };
 
-    const generateInvestigatingDescription = (team, locations, impactType) => {
-        return `${team
-            .map((option) => option.label)
-            .join(
-                ", "
-            )} in ${locations} is Experiencing ${impactType}. We are aware of the issue and currently investigating it.`;
-    };
-    const generateMitigatedDescription = (team, locations, impactType) => {
-        return `Issue Stands Mitigated
-        Mitigated Steps: <Write Mitigation steps>
-        Customer Impact: <Write Customer Impact statement>
-        Communications : <Write Different types of Communication Posted>`;
-    };
-    const generateSubject = (team, locations, impactType) => {
-        return `${team
-            .map((option) => option.label)
-            .join(", ")} in ${locations} is Experiencing ${impactType}`;
-    };
 
-    // useEffect(() => {
-    //     const { team, status, impactType, locations } = formData;
-    //     if (status === "Investigating" && team && locations && impactType) {
-    //         setFormData((prevData) => ({
-    //             ...prevData,
-    //             description: generateInvestigatingDescription(
-    //                 team,
-    //                 locations,
-    //                 impactType
-    //             ),
-    //         }));
-    //     }
-    //     if (status === "Mitigated" && team && locations && impactType) {
-    //         setFormData((prevData) => ({
-    //             ...prevData,
-    //             description: generateMitigatedDescription(
-    //                 team,
-    //                 locations,
-    //                 impactType
-    //             ),
-    //         }));
-    //     }
-    //     if (status && team && locations && impactType) {
-    //         setFormData((prevData) => ({
-    //             ...prevData,
-    //             subject: generateSubject(team, locations, impactType),
-    //         }));
-    //     }
-    // }, [
-    //     formData.team,
-    //     formData.status,
-    //     formData.impactType,
-    //     formData.locations,
-    // ]);
 
     const validate = () => {
         const newErrors = {};
