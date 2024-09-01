@@ -5,12 +5,12 @@ import "react-quill/dist/quill.snow.css"; // import styles
 import { MultiSelect } from "react-multi-select-component";
 
 const teamOptions = [
-    { label: "Application Insights", value: "Application Insights" },
-    { label: "Log Analytics", value: "Log Analytics" },
-    { label: "Azure Monitoring", value: "Azure Monitoring" },
-    { label: "Azure Alerting", value: "Azure Alerting" },
-    { label: "Geneva Monitoring", value: "Geneva Monitoring" },
-    { label: "Azure Sentinel", value: "Azure Sentinel" },
+    { label: "Application Insights", value: "Application-Insights" },
+    { label: "Log Analytics", value: "Log-Analytics" },
+    { label: "Azure Monitoring", value: "Azure-Monitoring" },
+    { label: "Azure Alerting", value: "Azure-Alerting" },
+    { label: "Geneva Monitoring", value: "Geneva-Monitoring" },
+    { label: "Azure Sentinel", value: "Azure-Sentinel" },
 ];
 
 const NewLsiForm = ({ initialData, onClose, onPreview }) => {
@@ -35,6 +35,8 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     });
 
     const [errors, setErrors] = useState({});
+    const [autoSelectedAzureSentinel, setAutoSelectedAzureSentinel] =
+        useState(false);
 
     useEffect(() => {
         if (initialData) {
@@ -110,10 +112,36 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
         }));
     };
 
-    const handleTeamChange = (selected) => {
+    const handleTeamChange = (selectedOptions) => {
+        let newSelection = [...selectedOptions];
+        const isLogAnalyticsSelected = newSelection.some(
+            (option) => option.value === "Log-Analytics"
+        );
+        const isAzureSentinelSelected = newSelection.some(
+            (option) => option.value === "Azure-Sentinel"
+        );
+
+        if (
+            isLogAnalyticsSelected &&
+            !isAzureSentinelSelected &&
+            !autoSelectedAzureSentinel
+        ) {
+            // Auto-select "Azure sentinel" when "Log analytics" is selected
+            newSelection.push(
+                teamOptions.find((option) => option.value === "Azure-Sentinel")
+            );
+            setAutoSelectedAzureSentinel(true);
+        }
+
+        if (!isLogAnalyticsSelected) {
+            // Reset the auto-selection state if "Log analytics" is deselected
+            setAutoSelectedAzureSentinel(false);
+        }
+        // Update the selected state without affecting "Log analytics" when "Azure sentinel" is unselected.
+
         setFormData((prevFormData) => ({
             ...prevFormData,
-            team: selected, // Update with the selected options array
+            team: newSelection, // Update with the selected options array
         }));
     };
 
