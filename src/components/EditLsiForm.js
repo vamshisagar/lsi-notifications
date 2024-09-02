@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
-import ReactQuill from "react-quill";
+import ReactQuill from "react-quill-new";
 import "react-quill/dist/quill.snow.css"; // import styles
 import { MultiSelect } from "react-multi-select-component";
 
@@ -231,7 +231,7 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                         value={formData.description}
                         onChange={handleDescriptionChange}
                         theme="snow"
-                        style={{ height: "120px", fontSize: "1rem" }}
+                        style={{ height: "120px" }}
                     />
                     {errors.description && (
                         <span className="text-danger">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import ReactQuill from "react-quill";
+import ReactQuill from "react-quill-new";
 import "react-quill/dist/quill.snow.css"; // import styles
 import { MultiSelect } from "react-multi-select-component";
 
@@ -45,11 +45,11 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     }, [initialData]);
 
     const generateInvestigatingDescription = (team, locations, impactType) => {
-        return `${team
+        return `<p> ${team
             .map((option) => option.label)
             .join(
                 ", "
-            )} in ${locations} is Experiencing ${impactType}. We are aware of the issue and currently investigating it.`;
+            )} in ${locations} is Experiencing ${impactType}. We are aware of the issue and currently investigating it. </p>`;
     };
     const generateMitigatedDescription = (team, locations, impactType) => {
         return `Issue Stands Mitigated
@@ -167,6 +167,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
             onPreview(formData);
             onClose();
         }
+        console.log(formData);
     };
 
     const renderFormFields = () => (
@@ -314,7 +315,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                     value={formData.description}
                     onChange={handleDescriptionChange}
                     theme="snow"
-                    style={{ height: "120px", fontSize: "1rem" }}
+                    style={{ height: "120px" }}
                 />
                 {errors.description && (
                     <span className="text-danger">{errors.description}</span>
