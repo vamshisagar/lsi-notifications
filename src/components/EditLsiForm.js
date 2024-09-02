@@ -231,6 +231,7 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                         value={formData.description}
                         onChange={handleDescriptionChange}
                         theme="snow"
+                        style={{ height: "120px", fontSize: "1rem" }}
                     />
                     {errors.description && (
                         <span className="text-danger">
@@ -239,7 +240,7 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
                     )}
                 </Form.Group>
 
-                <Form.Group className="mt-2">
+                <Form.Group className="mt-5">
                     <Form.Label>Customer Impact</Form.Label>
                     <Form.Control
                         as="textarea"

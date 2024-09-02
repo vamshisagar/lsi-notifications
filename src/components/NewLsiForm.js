@@ -314,7 +314,7 @@ const NewLsiForm = ({ initialData, onClose, onPreview }) => {
                     value={formData.description}
                     onChange={handleDescriptionChange}
                     theme="snow"
-                    style={{ height: "120px" }}
+                    style={{ height: "120px", fontSize: "1rem" }}
                 />
                 {errors.description && (
                     <span className="text-danger">{errors.description}</span>
