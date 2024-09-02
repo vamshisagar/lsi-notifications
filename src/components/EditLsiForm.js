@@ -5,12 +5,12 @@ import "react-quill/dist/quill.snow.css"; // import styles
 import { MultiSelect } from "react-multi-select-component";
 
 const teamOptions = [
-    { label: "Application Insights", value: "Application Insights" },
-    { label: "Log Analytics", value: "Log Analytics" },
-    { label: "Azure Monitoring", value: "Azure Monitoring" },
-    { label: "Azure Alerting", value: "Azure Alerting" },
-    { label: "Geneva Monitoring", value: "Geneva Monitoring" },
-    { label: "Azure Sentinel", value: "Azure Sentinel" },
+    { label: "Application Insights", value: "Application-Insights" },
+    { label: "Log Analytics", value: "Log-Analytics" },
+    { label: "Azure Monitoring", value: "Azure-Monitoring" },
+    { label: "Azure Alerting", value: "Azure-Alerting" },
+    { label: "Geneva Monitoring", value: "Geneva-Monitoring" },
+    { label: "Azure Sentinel", value: "Azure-Sentinel" },
 ];
 
 const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
@@ -45,8 +45,6 @@ const EditLsiForm = ({ lsiData, onClose, onPreview }) => {
             description: value,
         }));
     };
-
-
 
     const validate = () => {
         const newErrors = {};

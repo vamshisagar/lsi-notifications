@@ -16,7 +16,7 @@ const teamOptions = [
 const NewLsiForm = ({ initialData, onClose, onPreview }) => {
     const [formData, setFormData] = useState({
         team: [
-            { label: "Application Insights", value: "Application Insights" },
+            { label: "Application Insights", value: "Application-Insights" },
         ],
         status: "Investigating",
         lsi: "",

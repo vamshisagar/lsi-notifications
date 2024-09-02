@@ -1,7 +1,7 @@
 const intialLsiData = [
     {
         team: [
-            { label: "Application Insights", value: "Application Insights" },
+            { label: "Application Insights", value: "Application-Insights" },
         ],
         status: "Investigating",
         lsi: "1",
@@ -22,7 +22,7 @@ const intialLsiData = [
     },
     {
         team: [
-            { label: "Application Insights", value: "Application Insights" },
+            { label: "Application Insights", value: "Application-Insights" },
         ],
         status: "Mitigated",
         lsi: "123",
